@@ -1,6 +1,6 @@
 import DOMPurify from "dompurify";
 import React, { useEffect, useRef } from "react";
-import { Line } from "./types";
+import { Line } from "../../vite/src/types";
 
 const escapeAngleBrackets = (text: string): string => {
   return text
@@ -29,7 +29,7 @@ const TextWithLinks: React.FC<{ line: Line }> = ({ line }) => {
       {line.channelName ? (
         <>
           <span style={{ color: line.color }} dangerouslySetInnerHTML={{ __html: line.channelName }} />
-          <span className="text-text dark:text-darkText" dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
+          <span className="" dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
         </>
       ) : (
         <span style={{ color: line.color, whiteSpace: "pre-wrap", }} dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />

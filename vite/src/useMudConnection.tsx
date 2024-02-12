@@ -5,7 +5,7 @@ import { Line } from './types';
 
 let colorPalette: string[];
 
-if(localStorage.theme === 'dark') {
+if(localStorage.getItem("theme") === 'dark') {
   colorPalette = [
     '#FF6B6B', // Lighter red
     '#51D88A', // Bright green

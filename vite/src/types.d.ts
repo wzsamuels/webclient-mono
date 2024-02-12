@@ -12,6 +12,12 @@ export interface IElectronAPI {
   connectClient: () => void
 }
 
+export interface Settings {
+  fontSize: number
+  theme: string
+  colorChannels: boolean
+}
+
 declare global {
   interface Window {
     electronAPI: IElectronAPI

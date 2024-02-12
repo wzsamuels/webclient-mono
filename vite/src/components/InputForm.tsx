@@ -5,6 +5,14 @@ const InputForm = ({onSubmit}: {onSubmit: (text:string) => void}) => {
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
 
+  const sendInput = () => {
+    // Add the message to the history and reset the history index
+    setHistory(prev => [...prev, message]);
+    setHistoryIndex(-1);
+    onSubmit(message);
+    setMessage('')   
+  }
+
   // Function to handle key down events for navigating history
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowUp') {
@@ -22,11 +30,7 @@ const InputForm = ({onSubmit}: {onSubmit: (text:string) => void}) => {
     } else if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
       // Send message on Enter key
-      // Add the message to the history and reset the history index
-      setHistory(prev => [...prev, message]);
-      setHistoryIndex(-1);
-      onSubmit(message);
-      setMessage('')   
+      sendInput();
     }
   };
 
@@ -38,7 +42,7 @@ const InputForm = ({onSubmit}: {onSubmit: (text:string) => void}) => {
         onChange={e => setMessage(e.target.value)}
         onKeyDown={handleKeyDown}
       ></input>
-      <button className="px-2 border-l hover:bg-background hover:text-text">Send</button>
+      <button className="px-2 border-l hover:bg-background hover:text-text" onClick={() => sendInput()}>Send</button>
     </div>
   );
 }
