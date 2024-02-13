@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, KeyboardEvent, FormEvent} from "react";
+import { useState, KeyboardEvent} from "react";
 
 const InputForm = ({onSubmit}: {onSubmit: (text:string) => void}) => {
   const [message, setMessage] = useState('');
